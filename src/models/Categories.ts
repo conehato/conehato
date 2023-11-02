@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 export interface CategoryEntity {
   id: string;
   name: string;
+  group?: string;
 }
 export interface Categories extends mongoose.Document {
   _id: string;
   name: string;
-  parent_id: Categories;
+  group?: string;
 }
 
 const CategorySchema = new mongoose.Schema<Categories>({
@@ -16,7 +17,7 @@ const CategorySchema = new mongoose.Schema<Categories>({
     type: String,
     required: [true, "카테고리의 이름이 제공되지 없습니다."],
   },
-  parent_id: { type: String, ref: "Category" },
+  group: { type: String },
 });
 
 export const Category =

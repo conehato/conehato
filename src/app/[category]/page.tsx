@@ -1,11 +1,38 @@
-import { getCategoryById } from "@/services/category";
+import { getArticles } from "@/services/article";
+import { getRootCategories } from "@/services/category";
+import NotFound from "../not-found";
 
 export default async function Post({
-  params: { category },
+  params: { category: categoryId },
 }: {
   params: { category: string };
 }) {
-  const { id, name } = await getCategoryById(category);
+  const { rows } = await getRootCategories();
+  const category = rows.find((row) => row.id === categoryId);
 
-  return <div>{name}에 해당하는 포스트 목록 입니다.</div>;
+  if (!category) return <NotFound />;
+
+  return (
+    <div>
+      <PostList categoryId={category.id} />
+    </div>
+  );
+}
+
+interface PostListProps {
+  categoryId: string;
+}
+async function PostList({ categoryId }: PostListProps) {
+  const { count, rows } = await getArticles({ limit: 5, page: 1, categoryId });
+
+  return (
+    <div>
+      <div>총 {count}개</div>
+      <div>
+        {rows.map((row) => (
+          <div key={row.id}>{JSON.stringify(row)}</div>
+        ))}
+      </div>
+    </div>
+  );
 }
