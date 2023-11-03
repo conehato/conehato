@@ -1,43 +1,30 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+"use client";
 
-const items = [
-  {
-    id: 1,
-    title: "Back End Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote",
-  },
-  {
-    id: 2,
-    title: "Front End Developer",
-    department: "Engineering",
-    type: "Full-time",
-    location: "Remote",
-  },
-  {
-    id: 3,
-    title: "User Interface Designer",
-    department: "Design",
-    type: "Full-time",
-    location: "Remote",
-  },
-];
+import { Button } from "../ui/button";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface PaginationProps {
   count: number;
   limit: number;
   page: number;
-  setPage: (page: number) => void;
   padding?: number;
 }
 export function Pagination({
   count,
   limit,
   page,
-  setPage,
-  padding = 3,
+  padding = 2,
 }: PaginationProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const _searchParams = useSearchParams();
+
+  const setPage = (page: number) => {
+    const searchParams = new URLSearchParams(_searchParams);
+    searchParams.set("page", String(page));
+    router.push(`${pathname}?${searchParams}`);
+  };
+
   const pageCount = Math.ceil(count / limit);
 
   const allList = [...new Array(pageCount)].map((_, index) => index + 1);
@@ -53,93 +40,81 @@ export function Pagination({
   const backwardList = backwardListTemp.slice(backwardListTemp.length - 2);
 
   return (
-    <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+    <div className="flex items-center justify-between px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
-        <a
-          href="#"
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Previous
-        </a>
-        <a
-          href="#"
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-        >
-          Next
-        </a>
+        {page !== 1 ? (
+          <Button onClick={() => setPage(page - 1)}>Previous</Button>
+        ) : (
+          <div />
+        )}
+        {page < pageCount ? (
+          <Button onClick={() => setPage(page + 1)}>Next</Button>
+        ) : (
+          <div />
+        )}
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
             Showing{" "}
-            <span className="font-medium">{page - 1 ? page * limit : 1}</span>{" "}
+            <span className="font-medium">
+              {page - 1 ? (page - 1) * limit : 1}
+            </span>{" "}
             to <span className="font-medium">{page * limit}</span> of{" "}
             <span className="font-medium">{count}</span> results
           </p>
         </div>
         <div>
           <nav
-            className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+            className="isolate inline-flex -space-x-px rounded-md shadow-sm gap-1"
             aria-label="Pagination"
           >
-            <a
-              href="#"
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-            </a>
-            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
-            <a
-              href="#"
-              aria-current="page"
-              className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              1
-            </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              2
-            </a>
-            <a
-              href="#"
-              className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-            >
-              3
-            </a>
-            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
-              ...
-            </span>
-            <a
-              href="#"
-              className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-            >
-              8
-            </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              9
-            </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              10
-            </a>
-            <a
-              href="#"
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </a>
+            {forwardList.map((index, i) =>
+              i === 0 ? (
+                <Button
+                  key={index}
+                  variant={index === page ? "default" : "secondary"}
+                  onClick={() => setPage(index)}
+                >
+                  {index}
+                </Button>
+              ) : (
+                <PaginationItemEllipsis key={index} />
+              )
+            )}
+            {centerList.map((index) => (
+              <Button
+                key={index}
+                variant={index === page ? "default" : "secondary"}
+                onClick={() => setPage(index)}
+              >
+                {index}
+              </Button>
+            ))}
+            {backwardList.map((index, i) =>
+              i === 0 && backwardList.length === 2 ? (
+                <PaginationItemEllipsis key={index} />
+              ) : (
+                <Button
+                  key={index}
+                  variant={index === page ? "default" : "secondary"}
+                  onClick={() => setPage(index)}
+                >
+                  {index}
+                </Button>
+              )
+            )}
           </nav>
         </div>
       </div>
     </div>
+  );
+}
+
+function PaginationItemEllipsis() {
+  return (
+    <Button className="cursor-auto" variant="secondary">
+      ...
+    </Button>
   );
 }

@@ -24,8 +24,9 @@ export default async function ArticleListPage({
   searchParams,
 }: ArticleListPageProps) {
   return (
-    <div>
-      <ArticleList categoryId={categoryId} page={searchParams.page} />
-    </div>
+    <ArticleList
+      categoryId={categoryId}
+      page={Number(searchParams.page || 1)}
+    />
   );
 }

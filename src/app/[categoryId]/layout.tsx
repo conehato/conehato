@@ -8,7 +8,7 @@ export default function CategoryLayout({
   params?: { categoryId?: string };
 }) {
   return (
-    <main className="flex flex-col min-h-full">
+    <main className="flex flex-col min-h-full gap-4">
       <Header categoryId={params?.categoryId} />
       {children}
     </main>

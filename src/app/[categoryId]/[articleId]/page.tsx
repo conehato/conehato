@@ -26,7 +26,10 @@ export default async function ArticleViewPage({
   return (
     <div className="flex flex-col gap-3">
       <ArticleView articleId={articleId} />
-      <ArticleList categoryId={categoryId} page={searchParams.page} />
+      <ArticleList
+        categoryId={categoryId}
+        page={Number(searchParams.page || 1)}
+      />
     </div>
   );
 }

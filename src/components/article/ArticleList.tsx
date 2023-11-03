@@ -17,8 +17,9 @@ export async function ArticleList({ categoryId, page = 1 }: ArticleListProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-full items-end">
+      <div className="flex h-full items-end border-b border-slate-200 p-1 gap-3">
         <h4 className="text-lg font-semibold">{category.name}</h4>
+        <div className="text-sm">{page}페이지</div>
       </div>
 
       <div className="flex flex-col">
@@ -32,7 +33,7 @@ export async function ArticleList({ categoryId, page = 1 }: ArticleListProps) {
         ))}
       </div>
 
-      <Pagination count={count} limit={5} page={page} setPage={() => {}} />
+      <Pagination count={count} limit={5} page={page} />
     </div>
   );
 }
