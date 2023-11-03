@@ -1,14 +1,12 @@
-import PostLayout from "./[category]/layout";
+import { Conehato } from "@/components/brand";
+import CategoryLayout from "./[categoryId]/layout";
 
 export default function Home() {
   return (
-    <PostLayout>
-      <div>home 입니다~</div>
-      <Banner />
-    </PostLayout>
+    <CategoryLayout>
+      <div className="w-full">
+        <Conehato.Banner />
+      </div>
+    </CategoryLayout>
   );
-}
-
-function Banner() {
-  return <div>Banner</div>;
 }

@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { dayjsInitialization } from "@/lib/dayjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  dayjsInitialization();
+
   return (
     <html lang="ja">
       <body className={cn("flex justify-center", inter.className)}>
