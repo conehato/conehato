@@ -3,7 +3,7 @@ import { Categories, CategoryEntity } from "./Categories";
 import { Anonymous, AnonymousEntity } from "./Anonymous";
 import { Comments, CommentsEntity } from "./Comments";
 
-export interface ArticlesEntity {
+export interface ArticleEntity {
   id: string;
   user: null;
   anonymous: AnonymousEntity;
@@ -12,6 +12,7 @@ export interface ArticlesEntity {
   comments: CommentsEntity[];
   category: CategoryEntity;
   views: number;
+  createdAt: string;
 }
 export interface Articles extends mongoose.Document {
   user: null;
@@ -63,6 +64,7 @@ const ArticleSchema = new mongoose.Schema<Articles>(
           type: String,
           required: [true, "댓글 내용이 제공되지 없습니다."],
         },
+        createdAt: { type: Date, default: Date.now },
         default: [],
       },
     ],

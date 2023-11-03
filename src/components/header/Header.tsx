@@ -16,12 +16,12 @@ export async function Header({ categoryId }: HeaderProps) {
     <div className="flex flex-col w-full">
       <div className="flex flex-row h-16 items-center gap-4">
         <Link href="/">
-          <Conehato />
+          <Conehato.Title />
         </Link>
         {category?.name && (
-          <div className="flex h-full items-end">
+          <Link href={`/${category.id}`} className="flex h-full items-end">
             <h4 className="text-lg font-semibold">{category.name}</h4>
-          </div>
+          </Link>
         )}
       </div>
       {!categoryId && (
