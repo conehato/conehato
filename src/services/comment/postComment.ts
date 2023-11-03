@@ -2,24 +2,23 @@
 
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { Article } from "@/models";
 import { dbConnect } from "../dbConnect";
-import { ArticleFormType } from "@/components/article";
+import { CommentFormType } from "@/components/comment";
 
-export async function postArticle(values: ArticleFormType) {
+export async function postComment(values: CommentFormType) {
   const headersList = headers();
   const ip = headersList.get("x-forwarded-for");
 
   await dbConnect();
 
-  const article = await Article.create({
+  const newComments = {
     anonymous: { ip, name: values.name, password: values.password },
-    title: values.title,
     contents: values.contents,
-    category: values.category,
+  };
+  await Article.findByIdAndUpdate(values.articleId, {
+    $push: { comments: newComments },
   });
 
-  revalidatePath(`/${values.category}`);
-  redirect(`/${values.category}/${article._id}`);
+  revalidatePath(`/${values.categoryId}`, "layout");
 }

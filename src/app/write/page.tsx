@@ -15,8 +15,12 @@ export default async function WritePage({
       <ArticleForm
         defaultValues={{
           category: categories.find((category) => category.id === categoryId)
-            ? categoryId
-            : undefined,
+            ? categoryId || ""
+            : "",
+          name: "",
+          password: "",
+          title: "",
+          contents: "",
         }}
         categories={categories}
         onSubmit={

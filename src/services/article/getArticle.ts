@@ -15,7 +15,7 @@ export async function getArticle({ articleId, incViews }: GetArticleReq) {
     { new: true }
   ).exec();
 
-  revalidatePath(`/${articleId}`, "layout");
+  revalidatePath(article?.category ? `/${article.category}` : "/", "layout");
 
   return article;
 }

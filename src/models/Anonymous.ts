@@ -1,9 +1,9 @@
 export interface AnonymousEntity {
-  ip: number;
+  ip: string;
   name: string;
 }
 export interface Anonymous {
-  ip: number;
+  ip: string;
   name: string;
   password: string;
 }

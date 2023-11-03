@@ -1,9 +1,10 @@
 import { ArticleEntity } from "@/models";
 import { dayjsInitialization } from "@/lib/dayjs";
 import { getArticle } from "@/services/article";
-import { CommentList } from "../comment";
+import { CommentForm, CommentList } from "../comment";
 import dayjs from "dayjs";
 import { Separator } from "../ui/separator";
+import { postComment } from "@/services/comment";
 
 interface ArticleViewProps {
   articleId: string;
@@ -33,6 +34,16 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
       <div>{article.contents}</div>
 
       <CommentList comments={article.comments} />
+      <CommentForm
+        defaultValues={{
+          articleId: article.id,
+          categoryId: article.category as any as string,
+          contents: "",
+          name: "",
+          password: "",
+        }}
+        onSubmit={postComment}
+      />
     </div>
   );
 }

@@ -35,7 +35,7 @@ const formSchema = z.object({
 export type ArticleFormType = z.infer<typeof formSchema>;
 
 interface ArticleFormProps {
-  defaultValues: Partial<ArticleFormType>;
+  defaultValues: ArticleFormType;
   categories: CategoryEntity[];
   onSubmit: (values: ArticleFormType) => void;
 }
