@@ -1,24 +1,28 @@
-import NotFound from "@/app/not-found";
+import { Metadata } from "next";
 import { ArticleList, ArticleView } from "@/components/article";
-import { getRootCategories } from "@/services/category";
+import { ArticleEntity } from "@/models";
+import { getArticle } from "@/services/article";
+
+interface ArticleViewPageProps {
+  params: { categoryId: string; articleId: string };
+  searchParams: { page?: number };
+}
+
+export async function generateMetadata({
+  params: { articleId },
+}: ArticleViewPageProps): Promise<Metadata> {
+  const article = (await getArticle({ articleId })) as any as ArticleEntity;
+
+  return {
+    title: `${article.title} - コネハト`,
+    description: article.contents,
+  };
+}
 
 export default async function ArticleViewPage({
   params: { categoryId, articleId },
   searchParams,
-}: {
-  params: { categoryId: string; articleId: string };
-  searchParams: { page?: number };
-}) {
-  const { rows } = await getRootCategories();
-  const category = rows.find((row) => row.id === categoryId);
-
-  if (!category)
-    return (
-      <div className="flex flex-1 justify-center">
-        <NotFound />
-      </div>
-    );
-
+}: ArticleViewPageProps) {
   return (
     <div className="flex flex-col gap-3">
       <ArticleView articleId={articleId} />
