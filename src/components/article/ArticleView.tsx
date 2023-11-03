@@ -1,4 +1,5 @@
 import { ArticleEntity } from "@/models";
+import { dayjsInitialization } from "@/lib/dayjs";
 import { getArticle } from "@/services/article";
 import { CommentList } from "../comment";
 import dayjs from "dayjs";
@@ -9,6 +10,9 @@ interface ArticleViewProps {
 }
 export async function ArticleView({ articleId }: ArticleViewProps) {
   const article = (await getArticle({ articleId })) as any as ArticleEntity;
+
+  dayjsInitialization();
+
   return (
     <div className="flex flex-col gap-6 bg-slate-100 rounded p-3">
       <div className="flex flex-col">

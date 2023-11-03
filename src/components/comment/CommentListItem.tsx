@@ -1,3 +1,4 @@
+import { dayjsInitialization } from "@/lib/dayjs";
 import { CommentsEntity } from "@/models/Comments";
 import dayjs from "dayjs";
 
@@ -5,6 +6,8 @@ interface CommentListItemProps {
   comment: CommentsEntity;
 }
 export function CommentListItem({ comment }: CommentListItemProps) {
+  dayjsInitialization();
+
   return (
     <div className="flex flex-col gap-2 p-2 border-b border-slate-200">
       <div className="flex gap-2 text-sm">

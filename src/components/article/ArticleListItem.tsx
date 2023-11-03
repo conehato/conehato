@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArticleEntity } from "@/models";
-
+import { dayjsInitialization } from "@/lib/dayjs";
 import { Separator } from "../ui/separator";
 import dayjs from "dayjs";
 
@@ -14,6 +14,8 @@ export function ArticleListItem({
   categoryId,
   page,
 }: ArticleListItemProps) {
+  dayjsInitialization();
+
   return (
     <Link
       href={{ pathname: `/${categoryId}/${article.id}`, query: `page=${page}` }}
