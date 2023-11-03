@@ -58,10 +58,11 @@ export function Pagination({
           <p className="text-sm text-gray-700">
             Showing{" "}
             <span className="font-medium">
-              {page - 1 ? (page - 1) * limit : 1}
+              {Math.min(count, page - 1 ? (page - 1) * limit : 1)}
             </span>{" "}
-            to <span className="font-medium">{page * limit}</span> of{" "}
-            <span className="font-medium">{count}</span> results
+            to{" "}
+            <span className="font-medium">{Math.min(count, page * limit)}</span>{" "}
+            of <span className="font-medium">{count}</span> results
           </p>
         </div>
         <div>
