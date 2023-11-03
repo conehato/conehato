@@ -9,7 +9,10 @@ interface ArticleViewProps {
   articleId: string;
 }
 export async function ArticleView({ articleId }: ArticleViewProps) {
-  const article = (await getArticle({ articleId })) as any as ArticleEntity;
+  const article = (await getArticle({
+    articleId,
+    incViews: true,
+  })) as any as ArticleEntity;
 
   dayjsInitialization();
 

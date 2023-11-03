@@ -1,9 +1,11 @@
 "use server";
 
+import { headers } from "next/headers";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { Article } from "@/models";
 import { dbConnect } from "../dbConnect";
 import { ArticleFormType } from "@/components/article";
-import { headers } from "next/headers";
 
 export async function postArticle(values: ArticleFormType) {
   const headersList = headers();
@@ -11,16 +13,13 @@ export async function postArticle(values: ArticleFormType) {
 
   await dbConnect();
 
-  console.log("postArticle", ip, values);
-
-  await Article.create({
-    anonymous: {
-      ip: ip,
-      name: values.name,
-      password: values.password,
-    },
+  const article = await Article.create({
+    anonymous: { ip: ip, name: values.name, password: values.password },
     title: values.title,
     contents: values.contents,
     category: values.category,
   });
+
+  revalidatePath(`/${values.category}`);
+  redirect(`/${values.category}/${article._id}`);
 }

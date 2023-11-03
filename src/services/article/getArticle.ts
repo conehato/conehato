@@ -1,11 +1,21 @@
 import { Article } from "@/models";
 import { dbConnect } from "../dbConnect";
+import { revalidatePath } from "next/cache";
 
 interface GetArticleReq {
   articleId: string;
+  incViews?: boolean;
 }
-export async function getArticle(req: GetArticleReq) {
+export async function getArticle({ articleId, incViews }: GetArticleReq) {
   await dbConnect();
 
-  return await Article.findById(req.articleId).exec();
+  const article = await Article.findByIdAndUpdate(
+    articleId,
+    incViews ? { $inc: { views: 1 } } : {},
+    { new: true }
+  ).exec();
+
+  revalidatePath(`/${articleId}`, "layout");
+
+  return article;
 }
