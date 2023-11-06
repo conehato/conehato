@@ -23,12 +23,7 @@ export default async function WritePage({
           contents: "",
         }}
         categories={categories}
-        onSubmit={
-          postArticle
-          //   (values) => {
-          //   console.log(values);
-          // }
-        }
+        onSubmit={postArticle}
       />
     </div>
   );

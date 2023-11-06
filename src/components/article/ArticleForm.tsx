@@ -23,6 +23,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { CategoryEntity } from "@/models";
+import { Editor } from "../editor";
 
 const formSchema = z.object({
   name: z.string(),
@@ -52,7 +53,10 @@ export function ArticleForm({
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit((values) => onSubmit(values))}
+        onSubmit={form.handleSubmit((values) => {
+          onSubmit(values);
+          form.reset();
+        })}
         className="space-y-8"
       >
         <FormField
@@ -126,11 +130,11 @@ export function ArticleForm({
         <FormField
           control={form.control}
           name="contents"
-          render={({ field }) => (
+          render={({ field: { value, onChange } }) => (
             <FormItem>
               <FormLabel>contents</FormLabel>
               <FormControl>
-                <Input placeholder="contents" {...field} />
+                <Editor value={value} onChange={onChange} />
               </FormControl>
               <FormMessage />
             </FormItem>

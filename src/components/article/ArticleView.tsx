@@ -5,6 +5,7 @@ import { CommentForm, CommentList } from "../comment";
 import dayjs from "dayjs";
 import { Separator } from "../ui/separator";
 import { postComment } from "@/services/comment";
+import { ArticleViewContent } from "./ArticleViewContent";
 
 interface ArticleViewProps {
   articleId: string;
@@ -31,7 +32,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
         </div>
       </div>
 
-      <div>{article.contents}</div>
+      <ArticleViewContent content={article.contents} />
 
       <CommentList comments={article.comments} />
       <CommentForm

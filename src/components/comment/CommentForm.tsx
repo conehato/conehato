@@ -42,7 +42,6 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
       <form
         onSubmit={form.handleSubmit((values) => {
           onSubmit(values);
-          console.log("handleSubmit reset");
           form.reset();
         })}
         className="space-y-1"
