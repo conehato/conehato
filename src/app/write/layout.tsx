@@ -6,7 +6,7 @@ export default function CategoryLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex flex-col min-h-full gap-4">
+    <main className="flex flex-col min-h-full">
       <Header hideNavigationMenu />
       {children}
     </main>

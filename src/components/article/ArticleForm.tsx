@@ -57,7 +57,7 @@ export function ArticleForm({
           onSubmit(values);
           form.reset();
         })}
-        className="space-y-8"
+        className="space-y-4"
       >
         <FormField
           control={form.control}
@@ -83,7 +83,7 @@ export function ArticleForm({
             </FormItem>
           )}
         />
-        <div className="flex gap-2">
+        <div className="flex gap-0">
           <FormField
             control={form.control}
             name="name"

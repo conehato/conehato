@@ -16,7 +16,7 @@ export interface NavigationMenuProps {
 }
 export function NavigationMenu({ categories }: NavigationMenuProps) {
   return (
-    <div className="flex pb-2">
+    <div className="flex bg-slate-100 py-2">
       <_NavigationMenu>
         <NavigationMenuList>
           {categories.map((category) => (
