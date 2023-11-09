@@ -1,3 +1,7 @@
+![conehatoBigTitleImage](https://github.com/conehato/conehato/assets/40460655/8f533a43-3978-4b9e-b135-e14a8d2246e7)
+
+# Conehato
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
