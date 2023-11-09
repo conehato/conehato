@@ -42,9 +42,7 @@ export async function Header({
         )}
       </div>
       {!categoryId && !hideNavigationMenu && (
-        <div className="h-16">
-          <NavigationMenu categories={rows} />
-        </div>
+        <NavigationMenu categories={rows} />
       )}
     </div>
   );
