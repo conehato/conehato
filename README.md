@@ -1,4 +1,4 @@
-![conehatoBigTitleImage](https://github.com/conehato/conehato/assets/40460655/8f533a43-3978-4b9e-b135-e14a8d2246e7)
+![conehatoBigTitleImage](https://github.com/conehato/conehato/assets/40460655/0710042f-87ec-454f-a5e0-8af0cb3cc98f)
 
 # Conehato
 
