@@ -19,8 +19,8 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
   dayjsInitialization();
 
   return (
-    <div className="flex flex-col gap-6 bg-slate-100 rounded p-3">
-      <div className="flex flex-col">
+    <div className="flex flex-col gap-2 rounded">
+      <div className="flex flex-col border-b-4 px-3 py-2">
         <div className="text-lg font-semibold">{article.title}</div>
 
         <div className="flex h-5 items-center text-sm gap-2">

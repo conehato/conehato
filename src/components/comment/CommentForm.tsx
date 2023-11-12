@@ -44,9 +44,9 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
           onSubmit(values);
           form.reset();
         })}
-        className="space-y-1"
+        className="space-y-1 m-3 border-2 border-slate-400"
       >
-        <div className="flex gap-2">
+        <div className="flex gap-0">
           <FormField
             control={form.control}
             name="name"
@@ -87,7 +87,7 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提出</Button>
       </form>
     </Form>
   );

@@ -83,13 +83,13 @@ export function ArticleForm({
             </FormItem>
           )}
         />
-        <div className="flex gap-0">
+        <div className="inline-flex">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>name</FormLabel>
+                <FormLabel></FormLabel>
                 <FormControl>
                   <Input placeholder="name" {...field} />
                 </FormControl>
@@ -103,7 +103,7 @@ export function ArticleForm({
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>password</FormLabel>
+                <FormLabel></FormLabel>
                 <FormControl>
                   <Input placeholder="password" {...field} type="password" />
                 </FormControl>
@@ -118,7 +118,7 @@ export function ArticleForm({
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>title</FormLabel>
+              <FormLabel></FormLabel>
               <FormControl>
                 <Input placeholder="title" {...field} />
               </FormControl>
@@ -132,7 +132,7 @@ export function ArticleForm({
           name="contents"
           render={({ field: { value, onChange } }) => (
             <FormItem>
-              <FormLabel>contents</FormLabel>
+              <FormLabel></FormLabel>
               <FormControl>
                 <Editor value={value} onChange={onChange} />
               </FormControl>
@@ -141,7 +141,7 @@ export function ArticleForm({
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <Button type="submit">提出</Button>
       </form>
     </Form>
   );

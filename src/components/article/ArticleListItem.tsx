@@ -26,7 +26,7 @@ export function ArticleListItem({
         <div className="font-semibold">{article.comments.length}</div>
       </div>
 
-      <div className="flex h-5 items-center text-sm gap-2">
+      <div className="flex h-5 items-center text-sm gap-2 text-slate-400">
         <div>{article.anonymous.name}</div>
         <Separator orientation="vertical" />
         <div>{dayjs(article.createdAt).fromNow()}</div>
