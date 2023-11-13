@@ -17,7 +17,7 @@ export default async function WritePage({
           category: categories.find((category) => category.id === categoryId)
             ? categoryId || ""
             : "",
-          name: "",
+          name: "ああ",
           password: "",
           title: "",
           contents: "",

@@ -8,10 +8,8 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -57,17 +55,15 @@ export function ArticleForm({
           onSubmit(values);
           form.reset();
         })}
-        className="space-y-4"
       >
         <FormField
           control={form.control}
           name="category"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>category</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger ring={false} className="rounded-none">
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
                 </FormControl>
@@ -83,15 +79,19 @@ export function ArticleForm({
             </FormItem>
           )}
         />
-        <div className="inline-flex">
+        <div className="flex">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel></FormLabel>
+              <FormItem className="flex flex-1">
                 <FormControl>
-                  <Input placeholder="name" {...field} />
+                  <Input
+                    className="rounded-none"
+                    ring={false}
+                    placeholder="name"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,10 +102,15 @@ export function ArticleForm({
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel></FormLabel>
+              <FormItem className="flex flex-1">
                 <FormControl>
-                  <Input placeholder="password" {...field} type="password" />
+                  <Input
+                    className="rounded-none"
+                    ring={false}
+                    placeholder="password"
+                    {...field}
+                    type="password"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -118,9 +123,13 @@ export function ArticleForm({
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel></FormLabel>
               <FormControl>
-                <Input placeholder="title" {...field} />
+                <Input
+                  className="rounded-none"
+                  ring={false}
+                  placeholder="title"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -132,7 +141,6 @@ export function ArticleForm({
           name="contents"
           render={({ field: { value, onChange } }) => (
             <FormItem>
-              <FormLabel></FormLabel>
               <FormControl>
                 <Editor value={value} onChange={onChange} />
               </FormControl>
@@ -141,7 +149,9 @@ export function ArticleForm({
           )}
         />
 
-        <Button type="submit">提出</Button>
+        <div className="flex justify-end p-2">
+          <Button type="submit">提出</Button>
+        </div>
       </form>
     </Form>
   );
