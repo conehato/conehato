@@ -6,7 +6,7 @@ interface HomePageProps {
 }
 export default function HomePage({ searchParams }: HomePageProps) {
   return (
-    <CategoryLayout>
+    <CategoryLayout toWrite={false}>
       <ArticleList
         page={Number(searchParams.page || 1)}
         isHot={Boolean(searchParams.hot || false)}
