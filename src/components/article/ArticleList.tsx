@@ -11,7 +11,7 @@ export async function ArticleList({ categoryId, page = 1 }: ArticleListProps) {
   const category = await getCategoryById({ categoryId });
   const { count, rows: articleList } = await getArticles({
     page,
-    limit: 5,
+    limit: 30,
     categoryId,
   });
 
@@ -33,7 +33,7 @@ export async function ArticleList({ categoryId, page = 1 }: ArticleListProps) {
         ))}
       </div>
 
-      <Pagination count={count} limit={5} page={page} />
+      <Pagination count={count} limit={30} page={page} />
     </div>
   );
 }

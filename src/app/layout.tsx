@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={cn("flex justify-center", inter.className)}>
-        <div className="max-w-3xl w-full">{children}</div>
+        <div className="max-w-3xl w-full overflow-y-auto">{children}</div>
       </body>
       <Analytics />
     </html>
