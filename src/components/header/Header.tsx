@@ -27,11 +27,6 @@ export async function Header({
           <Link href="/">
             <Conehato.Title />
           </Link>
-          {category?.name && (
-            <Link href={`/${category.id}`} className="flex h-full items-end">
-              <h4 className="text-lg font-semibold">{category.name}</h4>
-            </Link>
-          )}
         </div>
         {toWrite && (
           <Link href={`/write${categoryId ? `?category=${categoryId}` : ""}`}>
@@ -41,8 +36,8 @@ export async function Header({
           </Link>
         )}
       </div>
-      {!categoryId && !hideNavigationMenu && (
-        <NavigationMenu categories={rows} />
+      {!hideNavigationMenu && (
+        <NavigationMenu currentCategoryId={category?.id} categories={rows} />
       )}
     </div>
   );
