@@ -2,24 +2,34 @@ import { getArticles } from "@/services/article";
 import { ArticleListItem } from "./ArticleListItem";
 import { Pagination } from "../pagination";
 import { getCategoryById } from "@/services/category";
+import { ArticleListFilter } from "./ArticleListFilter";
 
 interface ArticleListProps {
   categoryId: string;
   page?: number;
+  isHot?: boolean;
 }
-export async function ArticleList({ categoryId, page = 1 }: ArticleListProps) {
+export async function ArticleList({
+  categoryId,
+  page = 1,
+  isHot = false,
+}: ArticleListProps) {
   const category = await getCategoryById({ categoryId });
   const { count, rows: articleList } = await getArticles({
     page,
     limit: 30,
     categoryId,
+    isHot,
   });
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-full items-end border-b border-slate-200 p-1 gap-3">
-        <h4 className="text-lg font-semibold">{category.name}</h4>
-        <div className="text-sm">{page}페이지</div>
+      <div className="flex border-b border-slate-200 items-center justify-between">
+        <div className="flex items-end p-1 gap-3">
+          <h4 className="text-lg font-semibold">{category.name}</h4>
+          <div className="text-sm">{page}페이지</div>
+        </div>
+        <ArticleListFilter isHot={isHot} />
       </div>
 
       <div className="flex flex-col">

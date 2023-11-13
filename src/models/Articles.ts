@@ -13,6 +13,7 @@ export interface ArticleEntity {
   category: CategoryEntity;
   views: number;
   createdAt: string;
+  isHot: boolean;
 }
 export interface Articles extends mongoose.Document {
   user: null;
@@ -22,6 +23,7 @@ export interface Articles extends mongoose.Document {
   comments: Comments[];
   category: Categories;
   views: number;
+  isHot: boolean;
 }
 
 const ArticleSchema = new mongoose.Schema<Articles>(
@@ -74,6 +76,7 @@ const ArticleSchema = new mongoose.Schema<Articles>(
       required: [true, "카테고리가 제공되지 않았습니다."],
     },
     views: { type: Number, default: 0 },
+    isHot: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

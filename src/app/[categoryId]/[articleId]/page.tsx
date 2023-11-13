@@ -5,7 +5,7 @@ import { getArticle } from "@/services/article";
 
 interface ArticleViewPageProps {
   params: { categoryId: string; articleId: string };
-  searchParams: { page?: number };
+  searchParams: { page?: number; hot?: boolean };
 }
 
 export async function generateMetadata({
@@ -29,6 +29,7 @@ export default async function ArticleViewPage({
       <ArticleList
         categoryId={categoryId}
         page={Number(searchParams.page || 1)}
+        isHot={Boolean(searchParams.hot || false)}
       />
     </div>
   );
