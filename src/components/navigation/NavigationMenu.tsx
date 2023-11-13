@@ -27,17 +27,6 @@ export function NavigationMenu({
     <div className="flex bg-slate-100 py-2">
       <_NavigationMenu>
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <Link href="/" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={navigationMenuTriggerStyleWithActive(
-                  !currentCategoryId
-                )}
-              >
-                전체
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
           {categories.map((category) => (
             <NavigationMenuItem key={category.id}>
               <Link href={`/${category.id}`} legacyBehavior passHref>
