@@ -6,19 +6,17 @@ import dayjs from "dayjs";
 
 interface ArticleListItemProps {
   article: ArticleEntity;
-  categoryId: string;
   page: number;
 }
-export function ArticleListItem({
-  article,
-  categoryId,
-  page,
-}: ArticleListItemProps) {
+export function ArticleListItem({ article, page }: ArticleListItemProps) {
   dayjsInitialization();
 
   return (
     <Link
-      href={{ pathname: `/${categoryId}/${article.id}`, query: `page=${page}` }}
+      href={{
+        pathname: `/${article.category}/${article.id}`,
+        query: `page=${page}`,
+      }}
       className="flex flex-col p-2 border-b border-slate-200 hover:bg-slate-100 rounded"
     >
       <div className="flex h-7 items-center gap-2">

@@ -1,12 +1,16 @@
-import { Conehato } from "@/components/brand";
 import CategoryLayout from "./[categoryId]/layout";
+import { ArticleList } from "@/components/article";
 
-export default function Home() {
+interface HomePageProps {
+  searchParams: { page?: number; hot?: boolean };
+}
+export default function HomePage({ searchParams }: HomePageProps) {
   return (
     <CategoryLayout>
-      <div className="w-full">
-        <Conehato.Banner />
-      </div>
+      <ArticleList
+        page={Number(searchParams.page || 1)}
+        isHot={Boolean(searchParams.hot || false)}
+      />
     </CategoryLayout>
   );
 }

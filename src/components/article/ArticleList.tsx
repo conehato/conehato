@@ -5,7 +5,7 @@ import { getCategoryById } from "@/services/category";
 import { ArticleListFilter } from "./ArticleListFilter";
 
 interface ArticleListProps {
-  categoryId: string;
+  categoryId?: string;
   page?: number;
   isHot?: boolean;
 }
@@ -14,7 +14,9 @@ export async function ArticleList({
   page = 1,
   isHot = false,
 }: ArticleListProps) {
-  const category = await getCategoryById({ categoryId });
+  const category = categoryId
+    ? await getCategoryById({ categoryId })
+    : { name: undefined };
   const { count, rows: articleList } = await getArticles({
     page,
     limit: 30,
@@ -26,7 +28,7 @@ export async function ArticleList({
     <div className="flex flex-col">
       <div className="flex border-b border-slate-200 items-center justify-between">
         <div className="flex items-end p-1 gap-3">
-          <h4 className="text-lg font-semibold">{category.name}</h4>
+          <h4 className="text-lg font-semibold">{category.name || "전체"}</h4>
           <div className="text-sm">{page}페이지</div>
         </div>
         <ArticleListFilter isHot={isHot} />
@@ -37,7 +39,6 @@ export async function ArticleList({
           <ArticleListItem
             key={article.id}
             article={article as any}
-            categoryId={categoryId}
             page={page}
           />
         ))}
