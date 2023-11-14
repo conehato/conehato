@@ -1,18 +1,15 @@
 import { Header } from "@/components/header";
 
-interface CategoryLayoutProps {
-  children: React.ReactNode;
-  params?: { categoryId?: string };
-  toWrite?: boolean;
-}
 export default function CategoryLayout({
   children,
   params,
-  toWrite = true,
-}: CategoryLayoutProps) {
+}: {
+  children: React.ReactNode;
+  params?: { categoryId?: string };
+}) {
   return (
     <main className="flex flex-col min-h-full">
-      <Header categoryId={params?.categoryId} toWrite={toWrite} />
+      <Header categoryId={params?.categoryId} toWrite={!!params?.categoryId} />
       {children}
     </main>
   );
