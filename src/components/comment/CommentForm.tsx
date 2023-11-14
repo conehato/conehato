@@ -86,8 +86,9 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
             </FormItem>
           )}
         />
-
-        <Button type="submit">提出</Button>
+      <div className="flex justify-end p-2"> 
+       <Button type="submit">提出</Button>
+      </div>
       </form>
     </Form>
   );
