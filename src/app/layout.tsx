@@ -10,8 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "コネハト",
-  // TODO: conehato의 공식적인 설명 작성 필요
-  description: "conehato is best",
+  description:
+    "匿名で様々な分野について話し合えるコミュニティサイト、Connecting Heartsコネハトです。",
 };
 
 export default function RootLayout({

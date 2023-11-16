@@ -7,7 +7,7 @@ function ConehatoTitle() {
   return (
     <Image
       src={conehatoTitleImage}
-      alt="conehato title"
+      alt="匿名で様々な分野について話し合えるコミュニティサイト、Connecting Heartsコネハトです。"
       className="w-32"
       style={{ aspectRatio: 3791 / 1267 }}
     />
@@ -18,7 +18,7 @@ function ConehatoBanner() {
   return (
     <Image
       src={conehatoBannerImage}
-      alt="conehato banner"
+      alt="匿名で様々な分野について話し合えるコミュニティサイト、Connecting Heartsコネハトです。"
       style={{ aspectRatio: 5000 / 1918 }}
     />
   );
