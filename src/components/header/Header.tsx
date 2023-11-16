@@ -17,12 +17,10 @@ export async function Header({ categoryId, hideNavigationMenu }: HeaderProps) {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="flex h-16 justify-between items-center gap-4">
-        <div className="flex h-16 items-center gap-4">
-          <Link href="/">
-            <Conehato.Title />
-          </Link>
-        </div>
+      <div className="flex h-12 justify-center items-center">
+        <Link href="/">
+          <Conehato.Title />
+        </Link>
       </div>
       {!hideNavigationMenu && (
         <NavigationMenu currentCategoryId={category?.id} categories={rows} />

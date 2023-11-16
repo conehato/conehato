@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "../ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface PaginationProps {
@@ -13,7 +14,7 @@ export function Pagination({
   count,
   limit,
   page,
-  padding = 2,
+  padding = 3,
 }: PaginationProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -40,74 +41,68 @@ export function Pagination({
   const backwardList = backwardListTemp.slice(backwardListTemp.length - 2);
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 sm:px-6">
-      <div className="flex flex-1 justify-between sm:hidden">
-        {page !== 1 ? (
-          <Button onClick={() => setPage(page - 1)}>Previous</Button>
-        ) : (
-          <div />
-        )}
-        {page < pageCount ? (
-          <Button onClick={() => setPage(page + 1)}>Next</Button>
-        ) : (
-          <div />
-        )}
-      </div>
-      <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm text-gray-700">
-            Showing{" "}
-            <span className="font-medium">
-              {Math.min(count, page - 1 ? (page - 1) * limit : 1)}
-            </span>{" "}
-            to{" "}
-            <span className="font-medium">{Math.min(count, page * limit)}</span>{" "}
-            of <span className="font-medium">{count}</span> results
-          </p>
-        </div>
-        <div>
-          <nav
-            className="isolate inline-flex -space-x-px rounded-md shadow-sm gap-1"
-            aria-label="Pagination"
-          >
-            {forwardList.map((index, i) =>
-              i === 0 ? (
-                <Button
-                  key={index}
-                  variant={index === page ? "default" : "secondary"}
-                  onClick={() => setPage(index)}
-                >
-                  {index}
-                </Button>
-              ) : (
-                <PaginationItemEllipsis key={index} />
-              )
-            )}
-            {centerList.map((index) => (
+    <div className="flex flex-1 items-center justify-between py-2 px-4">
+      <Button
+        variant="outline"
+        disabled={page === 1}
+        onClick={() => setPage(1)}
+        className="py-1.5 px-2 h-auto"
+      >
+        <ChevronLeft className="mr-1 h-4 w-4" /> 처음으로
+      </Button>
+
+      <div className="flex">
+        <nav
+          className="isolate inline-flex -space-x-px rounded-md gap-1"
+          aria-label="Pagination"
+        >
+          {/* {forwardList.map((index, i) =>
+            i === 0 ? (
               <Button
                 key={index}
-                variant={index === page ? "default" : "secondary"}
+                variant={index === page ? "secondary" : ""}
                 onClick={() => setPage(index)}
               >
                 {index}
               </Button>
-            ))}
-            {backwardList.map((index, i) =>
-              i === 0 && backwardList.length === 2 ? (
-                <PaginationItemEllipsis key={index} />
-              ) : (
-                <Button
-                  key={index}
-                  variant={index === page ? "default" : "secondary"}
-                  onClick={() => setPage(index)}
-                >
-                  {index}
-                </Button>
-              )
-            )}
-          </nav>
-        </div>
+            ) : (
+              <PaginationItemEllipsis key={index} />
+            )
+          )} */}
+          {centerList.map((index) => (
+            <Button
+              key={index}
+              variant={index === page ? "secondary" : "link"}
+              onClick={() => setPage(index)}
+              className="w-8 h-8 p-0"
+            >
+              {index}
+            </Button>
+          ))}
+          {/* {backwardList.map((index, i) =>
+            i === 0 && backwardList.length === 2 ? (
+              <PaginationItemEllipsis key={index} />
+            ) : (
+              <Button
+                key={index}
+                variant={index === page ? "secondary" : ""}
+                onClick={() => setPage(index)}
+              >
+                {index}
+              </Button>
+            )
+          )} */}
+        </nav>
       </div>
+
+      <Button
+        variant="outline"
+        disabled={page >= pageCount}
+        onClick={() => setPage(page + 1)}
+        className="py-1.5 px-2 h-auto"
+      >
+        다음 <ChevronRight className="ml-1 h-4 w-4" />
+      </Button>
     </div>
   );
 }

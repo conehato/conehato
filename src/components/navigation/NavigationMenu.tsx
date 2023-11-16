@@ -24,15 +24,18 @@ export function NavigationMenu({
     cn(navigationMenuTriggerStyle(), active ? "bg-blue-900" : "");
 
   return (
-    <div className="flex bg-slate-200 py-2">
+    <div className="flex justify-center bg-slate-200 py-2">
       <_NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="px-4">
           {categories.map((category) => (
             <NavigationMenuItem key={category.id}>
               <Link href={`/${category.id}`} legacyBehavior passHref>
                 <NavigationMenuLink
-                  className={navigationMenuTriggerStyleWithActive(
-                    currentCategoryId === category.id
+                  className={cn(
+                    navigationMenuTriggerStyleWithActive(
+                      currentCategoryId === category.id
+                    ),
+                    "px-2.5 py-1.5 h-auto"
                   )}
                 >
                   {category.name}

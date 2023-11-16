@@ -21,7 +21,7 @@ export async function ArticleList({
     : { name: undefined };
   const { count, rows: articleList } = await getArticles({
     page,
-    limit: 30,
+    limit: 2,
     categoryId,
     isHot,
   });
@@ -43,7 +43,7 @@ export async function ArticleList({
         ))}
       </div>
 
-      <Pagination count={count} limit={30} page={page} />
+      <Pagination count={count} limit={2} page={page} />
     </div>
   );
 }
