@@ -25,6 +25,7 @@ export default async function ArticleListPage({
 }: ArticleListPageProps) {
   return (
     <ArticleList
+      toWrite
       categoryId={categoryId}
       page={Number(searchParams.page || 1)}
       isHot={Boolean(searchParams.hot || false)}

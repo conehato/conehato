@@ -8,11 +8,13 @@ interface ArticleListProps {
   categoryId?: string;
   page?: number;
   isHot?: boolean;
+  toWrite?: boolean;
 }
 export async function ArticleList({
   categoryId,
   page = 1,
   isHot = false,
+  toWrite = false,
 }: ArticleListProps) {
   const category = categoryId
     ? await getCategoryById({ categoryId })
@@ -26,13 +28,10 @@ export async function ArticleList({
 
   return (
     <div className="flex flex-col">
-      <div className="flex border-b border-slate-200 items-center justify-between">
-        <div className="flex items-end p-1 gap-3">
-          <h4 className="text-lg font-semibold">{category.name || "전체"}</h4>
-          <div className="text-sm">{page}페이지</div>
-        </div>
-        <ArticleListFilter isHot={isHot} />
-      </div>
+      <ArticleListFilter
+        isHot={isHot}
+        categoryId={toWrite ? categoryId : undefined}
+      />
 
       <div className="flex flex-col">
         {articleList.map((article) => (

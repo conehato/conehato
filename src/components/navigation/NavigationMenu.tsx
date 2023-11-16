@@ -24,7 +24,7 @@ export function NavigationMenu({
     cn(navigationMenuTriggerStyle(), active ? "bg-blue-900" : "");
 
   return (
-    <div className="flex bg-slate-100 py-2">
+    <div className="flex bg-slate-200 py-2">
       <_NavigationMenu>
         <NavigationMenuList>
           {categories.map((category) => (

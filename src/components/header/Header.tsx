@@ -7,14 +7,9 @@ import { Button } from "../ui/button";
 
 interface HeaderProps {
   categoryId?: string;
-  toWrite?: boolean;
   hideNavigationMenu?: boolean;
 }
-export async function Header({
-  categoryId,
-  toWrite,
-  hideNavigationMenu,
-}: HeaderProps) {
+export async function Header({ categoryId, hideNavigationMenu }: HeaderProps) {
   const { rows } = await getRootCategories();
   const category = categoryId
     ? rows.find((row) => row.id === categoryId)
@@ -28,13 +23,6 @@ export async function Header({
             <Conehato.Title />
           </Link>
         </div>
-        {toWrite && (
-          <Link href={`/write${categoryId ? `?category=${categoryId}` : ""}`}>
-            <Button variant="secondary">
-              <PenSquare className="mr-2 h-4 w-4" /> 글 작성
-            </Button>
-          </Link>
-        )}
       </div>
       {!hideNavigationMenu && (
         <NavigationMenu currentCategoryId={category?.id} categories={rows} />

@@ -9,7 +9,7 @@ export default function CategoryLayout({
 }) {
   return (
     <main className="flex flex-col min-h-full">
-      <Header categoryId={params?.categoryId} toWrite={!!params?.categoryId} />
+      <Header categoryId={params?.categoryId} />
       {children}
     </main>
   );
