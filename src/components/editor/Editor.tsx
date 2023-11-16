@@ -13,7 +13,7 @@ export function Editor({ value, onChange }: IEditorProps) {
   return (
     <CKEditor
       editor={ClassicEditor}
-      config={{ extraPlugins: [CKEditorPlugin] }}
+      config={{ extraPlugins: [CKEditorPlugin], toolbar: ["imageUpload"] }}
       onReady={(editor: any) => editor.data.set(value || "")}
       onChange={(_: any, editor: any) => onChange(editor.getData())}
     />
