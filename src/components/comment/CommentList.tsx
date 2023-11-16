@@ -1,10 +1,10 @@
 import { CommentsEntity } from "@/models/Comments";
-import { CommentListItem } from "./CommentListItem";
+import { CommentListItem, CommentListItemProps } from "./CommentListItem";
 
-interface CommentListProps {
+interface CommentListProps extends Omit<CommentListItemProps, "comment"> {
   comments: CommentsEntity[];
 }
-export function CommentList({ comments }: CommentListProps) {
+export function CommentList({ comments, ...props }: CommentListProps) {
   return (
     <div className="flex flex-col">
       <div className="flex h-full items-end px-3 py-1 border-y-4">
@@ -13,7 +13,7 @@ export function CommentList({ comments }: CommentListProps) {
 
       <div className="flex flex-col">
         {comments.map((comment) => (
-          <CommentListItem key={comment.id} comment={comment} />
+          <CommentListItem key={comment.id} comment={comment} {...props} />
         ))}
       </div>
     </div>

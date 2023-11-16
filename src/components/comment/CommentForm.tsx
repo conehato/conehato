@@ -10,12 +10,9 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-import { CategoryEntity } from "@/models";
 
 const formSchema = z.object({
   name: z.string(),
@@ -23,11 +20,12 @@ const formSchema = z.object({
   contents: z.string(),
   articleId: z.string(),
   categoryId: z.string(),
+  parentId: z.string().optional(),
 });
 
 export type CommentFormType = z.infer<typeof formSchema>;
 
-interface CommentFormProps {
+export interface CommentFormProps {
   onSubmit: (values: CommentFormType & { articleId: string }) => void;
   defaultValues: CommentFormType;
 }
@@ -86,9 +84,9 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
             </FormItem>
           )}
         />
-      <div className="flex justify-end p-2"> 
-       <Button type="submit">提出</Button>
-      </div>
+        <div className="flex justify-end p-2">
+          <Button type="submit">提出</Button>
+        </div>
       </form>
     </Form>
   );

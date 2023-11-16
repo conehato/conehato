@@ -34,7 +34,11 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
 
       <ArticleViewContent content={article.contents} />
 
-      <CommentList comments={article.comments} />
+      <CommentList
+        comments={article.comments}
+        articleId={article.id}
+        categoryId={article.category as any as string}
+      />
       <CommentForm
         defaultValues={{
           articleId: article.id,
@@ -42,6 +46,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
           contents: "",
           name: "",
           password: "",
+          parentId: "",
         }}
         onSubmit={postComment}
       />

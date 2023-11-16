@@ -66,6 +66,7 @@ const ArticleSchema = new mongoose.Schema<Articles>(
           type: String,
           required: [true, "댓글 내용이 제공되지 없습니다."],
         },
+        isChildren: { type: Boolean, default: false },
         createdAt: { type: Date, default: Date.now },
         default: [],
       },
