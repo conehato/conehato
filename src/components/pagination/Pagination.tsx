@@ -48,7 +48,7 @@ export function Pagination({
         onClick={() => setPage(1)}
         className="py-1.5 px-2 h-auto"
       >
-        <ChevronLeft className="mr-1 h-4 w-4" /> 처음으로
+        <ChevronLeft className="mr-1 h-4 w-4" /> 처음
       </Button>
 
       <div className="flex">
@@ -72,7 +72,7 @@ export function Pagination({
           {centerList.map((index) => (
             <Button
               key={index}
-              variant={index === page ? "secondary" : "link"}
+              variant={index === page ? "pageSelected" : "page"}
               onClick={() => setPage(index)}
               className="w-8 h-8 p-0"
             >
