@@ -29,7 +29,7 @@ export function ArticleListFilter({
   };
 
   return (
-    <div className="flex justify-between items-center px-4 py-2 bg-slate-100">
+    <div className="flex justify-between items-center px-4 py-1 bg-slate-100">
       <div className="flex flex-row gap-2">
         <Button
           variant={isHot ? "secondary" : "outline"}

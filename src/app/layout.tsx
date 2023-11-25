@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/react";
+import {Footer} from '@/components/footer'
 
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -22,9 +23,10 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={cn("flex justify-center overflow-y-auto", inter.className)}
+        className={cn("flex flex-col", inter.className)}
       >
         <div className="max-w-3xl w-full">{children}</div>
+        <Footer/>
       </body>
       <Analytics />
     </html>
