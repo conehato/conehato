@@ -35,7 +35,7 @@ export function NavigationMenu({
                     navigationMenuTriggerStyleWithActive(
                       currentCategoryId === category.id
                     ),
-                    "px-2.5 py-1.5 h-auto"
+                    "px-2 py-1 h-auto"
                   )}
                 >
                   {category.name}

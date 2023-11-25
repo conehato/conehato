@@ -72,7 +72,7 @@ export function Pagination({
           {centerList.map((index) => (
             <Button
               key={index}
-              variant={index === page ? "pageSelected" : "page"}
+              variant={index === page ? "groupSelected" : "group"}
               onClick={() => setPage(index)}
               className="w-8 h-8 p-0"
             >

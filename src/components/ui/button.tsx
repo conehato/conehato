@@ -20,8 +20,8 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
-        page: "text-slate-500",
-        pageSelected: "bg-slate-200",
+        group: "text-slate-500",
+        groupSelected: "bg-slate-200",
       },
       size: {
         default: "h-10 px-4 py-2",
