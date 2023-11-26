@@ -26,7 +26,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
         <div className="text-lg font-semibold">{article.title}</div>
 
         <div className="flex h-5 items-center text-sm gap-2">
-          <div>{article.anonymous.name}</div>
+          <div>{`${article.anonymous.name}(${article.anonymous.ip})`}</div>
           <Separator orientation="vertical" />
           <div>{dayjs(article.createdAt).fromNow()}</div>
           <Separator orientation="vertical" />
@@ -46,7 +46,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
           articleId: article.id,
           categoryId: article.category as any as string,
           contents: "",
-          name: "",
+          name: "ああ",
           password: "",
           parentId: "",
         }}

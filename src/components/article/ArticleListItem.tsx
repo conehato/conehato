@@ -56,7 +56,7 @@ export function ArticleListItem({ article, page }: ArticleListItemProps) {
           </p>
           <p className=" line-clamp-1 text-xs text-stone-500">
             {/* TODO: 조회수를 추천으로 변경 */}
-            {`${article.anonymous.name} | ${dayjs(
+            {`${article.anonymous.name}(${article.anonymous.ip}) | ${dayjs(
               article.createdAt
             ).fromNow()} | 조회수 ${article.views}`}
           </p>

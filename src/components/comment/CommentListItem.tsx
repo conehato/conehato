@@ -27,7 +27,7 @@ export function CommentListItem({
         articleId,
         categoryId,
         contents: "",
-        name: "",
+        name: "ああ",
         password: "",
       }}
       onSubmit={postComment}
@@ -39,7 +39,7 @@ export function CommentListItem({
         )}
       >
         <div className="flex gap-2 text-sm">
-          <div>{comment.anonymous.name}</div>
+          <div>{`${comment.anonymous.name}(${comment.anonymous.ip})`}</div>
           <div className="text-slate-500">
             {dayjs(comment.createdAt).fromNow()}
           </div>
