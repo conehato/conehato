@@ -23,7 +23,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={cn("flex flex-col", inter.className)}>
-        <div className="max-w-3xl w-full">{children}</div>
+        <div className="flex justify-center">
+          <div className="max-w-3xl w-full">{children}</div>
+        </div>
         <Footer />
       </body>
       <Analytics />
