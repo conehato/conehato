@@ -36,11 +36,7 @@ export async function ArticleList({
 
       <div className="flex flex-col">
         {articleList.map((article) => (
-          <ArticleListItem
-            key={article.id}
-            article={article as any}
-            page={page}
-          />
+          <ArticleListItem key={article.id} article={article} page={page} />
         ))}
       </div>
 

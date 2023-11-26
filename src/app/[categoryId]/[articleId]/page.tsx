@@ -12,7 +12,7 @@ interface ArticleViewPageProps {
 export async function generateMetadata({
   params: { articleId },
 }: ArticleViewPageProps): Promise<Metadata> {
-  const article = (await getArticle({ articleId })) as any as ArticleEntity;
+  const article = await getArticle({ articleId });
 
   return {
     title: `${article.title} - コネハト`,

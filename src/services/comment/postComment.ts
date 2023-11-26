@@ -4,8 +4,7 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
 import { CommentFormType } from "@/components/comment";
-import { Article } from "@/models";
-import { Comments } from "@/models/Comments";
+import { Article, Comments } from "@/models";
 
 import { dbConnect } from "../dbConnect";
 

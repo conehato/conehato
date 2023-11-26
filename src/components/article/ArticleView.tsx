@@ -13,10 +13,10 @@ interface ArticleViewProps {
   articleId: string;
 }
 export async function ArticleView({ articleId }: ArticleViewProps) {
-  const article = (await getArticle({
+  const article = await getArticle({
     articleId,
     incViews: true,
-  })) as any as ArticleEntity;
+  });
 
   dayjsInitialization();
 
@@ -39,12 +39,12 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
       <CommentList
         comments={article.comments}
         articleId={article.id}
-        categoryId={article.category as any as string}
+        categoryId={article.category.id}
       />
       <CommentForm
         defaultValues={{
           articleId: article.id,
-          categoryId: article.category as any as string,
+          categoryId: article.category.id,
           contents: "",
           name: "ああ",
           password: "",

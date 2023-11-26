@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 import { Anonymous, AnonymousEntity } from "./Anonymous";
 import { Categories, CategoryEntity } from "./Categories";
@@ -25,6 +26,7 @@ export interface Articles extends mongoose.Document {
   category: Categories;
   views: number;
   isHot: boolean;
+  createdAt: string;
 }
 
 const ArticleSchema = new mongoose.Schema<Articles>(

@@ -1,4 +1,4 @@
-import { CommentsEntity } from "@/models/Comments";
+import { CommentsEntity } from "@/models";
 
 import { CommentListItem, CommentListItemProps } from "./CommentListItem";
 

@@ -1,4 +1,5 @@
 import { Article } from "@/models";
+import { articleNormalizing } from "@/normalizing";
 
 import { dbConnect } from "../dbConnect";
 
@@ -26,7 +27,8 @@ export async function getArticles(req: GetArticlesReq) {
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit)
+    .populate("category")
     .exec();
 
-  return { count, rows: articles };
+  return { count, rows: articles.map(articleNormalizing) };
 }

@@ -19,7 +19,7 @@ export function ArticleListItem({ article, page }: ArticleListItemProps) {
   return (
     <Link
       href={{
-        pathname: `/${article.category}/${article.id}`,
+        pathname: `/${article.category.id}/${article.id}`,
         query: `page=${page}`,
       }}
       className="flex py-1 px-2 gap-2"
@@ -51,8 +51,7 @@ export function ArticleListItem({ article, page }: ArticleListItemProps) {
         </div>
         <div className="flex flex-col gap-1 pb-0.5">
           <p className="line-clamp-1 text-xs text-stone-700">
-            {/* TODO: name으로 변경 */}
-            {article.category as any}
+            {article.category.name}
           </p>
           <p className=" line-clamp-1 text-xs text-stone-500">
             {/* TODO: 조회수를 추천으로 변경 */}

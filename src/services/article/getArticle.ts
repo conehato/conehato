@@ -1,6 +1,7 @@
 import { revalidatePath } from "next/cache";
 
 import { Article } from "@/models";
+import { articleNormalizing } from "@/normalizing";
 
 import { dbConnect } from "../dbConnect";
 
@@ -15,9 +16,13 @@ export async function getArticle({ articleId, incViews }: GetArticleReq) {
     articleId,
     incViews ? { $inc: { views: 1 } } : {},
     { new: true }
-  ).exec();
+  )
+    .populate("category")
+    .exec();
+
+  if (!article) throw new Error("Article does not exist.");
 
   revalidatePath(article?.category ? `/${article.category}` : "/", "layout");
 
-  return article;
+  return articleNormalizing(article);
 }

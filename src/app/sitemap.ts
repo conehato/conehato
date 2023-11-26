@@ -20,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const articlesSiteMap = articles.map<MetadataRoute.Sitemap[number]>(
     (article) => ({
-      url: `${URL}/${article.category}/${article.id}`,
+      url: `${URL}/${article.category.id}/${article.id}`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,

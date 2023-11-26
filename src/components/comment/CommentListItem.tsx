@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 import { dayjsInitialization } from "@/lib/dayjs";
 import { cn } from "@/lib/utils";
-import { CommentsEntity } from "@/models/Comments";
+import { CommentsEntity } from "@/models";
 import { postComment } from "@/services/comment";
 
 import { CommentChildrenForm } from "./CommentChildrenForm";

@@ -1,4 +1,5 @@
 import { Category, CategoryEntity } from "@/models";
+import { categoryNormalizing } from "@/normalizing";
 
 import { dbConnect } from "../dbConnect";
 
@@ -9,10 +10,6 @@ export async function getRootCategories() {
 
   return {
     count: categories.length,
-    rows: categories.map<CategoryEntity>((category) => ({
-      id: category._id,
-      name: category.name,
-      group: category.group,
-    })),
+    rows: categories.map<CategoryEntity>(categoryNormalizing),
   };
 }
