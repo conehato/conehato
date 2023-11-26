@@ -1,4 +1,5 @@
 import { CommentsEntity } from "@/models/Comments";
+
 import { CommentListItem, CommentListItemProps } from "./CommentListItem";
 
 interface CommentListProps extends Omit<CommentListItemProps, "comment"> {

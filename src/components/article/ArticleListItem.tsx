@@ -1,11 +1,11 @@
-import Link from "next/link";
-import { ArticleEntity } from "@/models";
-import { dayjsInitialization } from "@/lib/dayjs";
 import dayjs from "dayjs";
-import { imageUrlInHtml } from "@/lib/regex";
 import Image from "next/image";
+import Link from "next/link";
 
 import placeholderImage from "@/assets/common/placeholderImage.png";
+import { dayjsInitialization } from "@/lib/dayjs";
+import { imageUrlInHtml } from "@/lib/regex";
+import { ArticleEntity } from "@/models";
 
 interface ArticleListItemProps {
   article: ArticleEntity;

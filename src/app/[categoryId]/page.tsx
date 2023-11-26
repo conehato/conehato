@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import { ArticleList } from "@/components/article";
 import { getCategoryById } from "@/services/category";
 

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import { Categories, CategoryEntity } from "./Categories";
+
 import { Anonymous, AnonymousEntity } from "./Anonymous";
+import { Categories, CategoryEntity } from "./Categories";
 import { Comments, CommentsEntity } from "./Comments";
 
 export interface ArticleEntity {

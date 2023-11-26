@@ -1,5 +1,6 @@
-import CategoryLayout from "./[categoryId]/layout";
 import { ArticleList } from "@/components/article";
+
+import CategoryLayout from "./[categoryId]/layout";
 
 interface HomePageProps {
   searchParams: { page?: number; hot?: boolean };

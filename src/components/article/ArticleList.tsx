@@ -1,8 +1,9 @@
 import { getArticles } from "@/services/article";
+import { getCategoryById } from "@/services/category";
+
+import { ArticleListFilter } from "./ArticleListFilter";
 import { ArticleListItem } from "./ArticleListItem";
 import { Pagination } from "../pagination";
-import { getCategoryById } from "@/services/category";
-import { ArticleListFilter } from "./ArticleListFilter";
 
 interface ArticleListProps {
   categoryId?: string;

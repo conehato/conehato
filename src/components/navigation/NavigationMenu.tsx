@@ -9,8 +9,8 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { CategoryEntity } from "@/models";
 import { cn } from "@/lib/utils";
+import { CategoryEntity } from "@/models";
 
 export interface NavigationMenuProps {
   categories: CategoryEntity[];

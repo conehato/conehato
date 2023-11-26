@@ -1,6 +1,8 @@
-import { Article } from "@/models";
-import { dbConnect } from "../dbConnect";
 import { revalidatePath } from "next/cache";
+
+import { Article } from "@/models";
+
+import { dbConnect } from "../dbConnect";
 
 interface GetArticleReq {
   articleId: string;

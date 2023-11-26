@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+
 import { ArticleList, ArticleView } from "@/components/article";
 import { ArticleEntity } from "@/models";
 import { getArticle } from "@/services/article";

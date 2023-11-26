@@ -1,6 +1,6 @@
 import { ArticleForm } from "@/components/article";
-import { getRootCategories } from "@/services/category";
 import { postArticle } from "@/services/article";
+import { getRootCategories } from "@/services/category";
 
 interface WritePageProps {
   searchParams: { category?: string };

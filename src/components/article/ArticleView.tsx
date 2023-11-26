@@ -1,11 +1,13 @@
-import { ArticleEntity } from "@/models";
-import { dayjsInitialization } from "@/lib/dayjs";
-import { getArticle } from "@/services/article";
-import { CommentForm, CommentList } from "../comment";
 import dayjs from "dayjs";
-import { Separator } from "../ui/separator";
+
+import { dayjsInitialization } from "@/lib/dayjs";
+import { ArticleEntity } from "@/models";
+import { getArticle } from "@/services/article";
 import { postComment } from "@/services/comment";
+
 import { ArticleViewContent } from "./ArticleViewContent";
+import { CommentForm, CommentList } from "../comment";
+import { Separator } from "../ui/separator";
 
 interface ArticleViewProps {
   articleId: string;

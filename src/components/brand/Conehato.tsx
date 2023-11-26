@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import conehatoTitleImage from "@/assets/brand/conehatoTitleImage.png";
 import conehatoBannerImage from "@/assets/brand/conehatoBannerImage.png";
+import conehatoTitleImage from "@/assets/brand/conehatoTitleImage.png";
 
 function ConehatoTitle() {
   return (

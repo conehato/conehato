@@ -1,11 +1,11 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { Analytics } from "@vercel/analytics/react";
-import {Footer} from '@/components/footer'
+import { Footer } from "@/components/footer";
+import { cn } from "@/lib/utils";
 
 import "./globals.css";
-import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,11 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body
-        className={cn("flex flex-col", inter.className)}
-      >
+      <body className={cn("flex flex-col", inter.className)}>
         <div className="max-w-3xl w-full">{children}</div>
-        <Footer/>
+        <Footer />
       </body>
       <Analytics />
     </html>

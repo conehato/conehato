@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import {contacts} from '@/lib/constants'
 
 export function Footer() {

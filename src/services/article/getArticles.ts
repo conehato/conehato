@@ -1,4 +1,5 @@
 import { Article } from "@/models";
+
 import { dbConnect } from "../dbConnect";
 
 interface GetArticlesReq {

@@ -1,6 +1,8 @@
-import Link from "next/link";
 import { PenSquare } from "lucide-react";
+import Link from "next/link";
+
 import { getRootCategories } from "@/services/category";
+
 import { Conehato } from "../brand";
 import { NavigationMenu } from "../navigation";
 import { Button } from "../ui/button";

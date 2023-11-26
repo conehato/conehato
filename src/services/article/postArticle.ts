@@ -1,11 +1,13 @@
 "use server";
 
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { Article } from "@/models";
-import { dbConnect } from "../dbConnect";
+
 import { ArticleFormType } from "@/components/article";
+import { Article } from "@/models";
+
+import { dbConnect } from "../dbConnect";
 
 export async function postArticle(values: ArticleFormType) {
   const headersList = headers();

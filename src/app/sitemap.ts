@@ -1,6 +1,7 @@
+import { MetadataRoute } from "next";
+
 import { getArticles } from "@/services/article";
 import { getRootCategories } from "@/services/category";
-import { MetadataRoute } from "next";
 
 const URL = "https://conehato.com";
 

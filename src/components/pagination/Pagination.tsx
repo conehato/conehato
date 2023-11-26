@@ -1,8 +1,9 @@
 "use client";
 
-import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import { Button } from "../ui/button";
 
 interface PaginationProps {
   count: number;

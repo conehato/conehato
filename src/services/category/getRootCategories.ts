@@ -1,4 +1,5 @@
 import { Category, CategoryEntity } from "@/models";
+
 import { dbConnect } from "../dbConnect";
 
 export async function getRootCategories() {

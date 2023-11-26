@@ -1,11 +1,13 @@
 "use server";
 
-import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
-import { Article } from "@/models";
-import { dbConnect } from "../dbConnect";
+import { headers } from "next/headers";
+
 import { CommentFormType } from "@/components/comment";
+import { Article } from "@/models";
 import { Comments } from "@/models/Comments";
+
+import { dbConnect } from "../dbConnect";
 
 export async function postComment(values: CommentFormType) {
   const headersList = headers();

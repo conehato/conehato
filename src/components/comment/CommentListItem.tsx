@@ -1,8 +1,10 @@
-import { dayjsInitialization } from "@/lib/dayjs";
-import { CommentsEntity } from "@/models/Comments";
 import dayjs from "dayjs";
-import { postComment } from "@/services/comment";
+
+import { dayjsInitialization } from "@/lib/dayjs";
 import { cn } from "@/lib/utils";
+import { CommentsEntity } from "@/models/Comments";
+import { postComment } from "@/services/comment";
+
 import { CommentChildrenForm } from "./CommentChildrenForm";
 
 export interface CommentListItemProps {
