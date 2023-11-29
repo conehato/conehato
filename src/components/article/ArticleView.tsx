@@ -6,6 +6,7 @@ import { getArticle } from "@/services/article";
 import { postComment } from "@/services/comment";
 
 import { ArticleViewContent } from "./ArticleViewContent";
+import { ArticleLikeForm } from "./ArticleLikeForm"
 import { CommentForm, CommentList } from "../comment";
 import { Separator } from "../ui/separator";
 
@@ -36,7 +37,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
       </div>
 
       <ArticleViewContent content={article.contents} />
-
+      <ArticleLikeForm article={article}/>
       <CommentList
         comments={article.comments}
         articleId={article.id}
