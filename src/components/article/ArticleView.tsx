@@ -12,6 +12,7 @@ import { Separator } from "../ui/separator";
 interface ArticleViewProps {
   articleId: string;
 }
+
 export async function ArticleView({ articleId }: ArticleViewProps) {
   const article = await getArticle({
     articleId,
