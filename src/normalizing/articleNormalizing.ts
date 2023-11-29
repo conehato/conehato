@@ -16,5 +16,13 @@ export function articleNormalizing(article: Articles): ArticleEntity {
     views: article.views,
     createdAt: article.createdAt,
     isHot: article.isHot,
+    isLiked: isUserLiked(article)
   };
+
+  function isUserLiked(article: Articles): boolean {
+    // if (article.user) {
+    //   // return article.user.id
+    // } 
+    return article.likes.includes(article.anonymous.ip)
+  }
 }
