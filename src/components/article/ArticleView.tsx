@@ -3,8 +3,10 @@ import dayjs from "dayjs";
 import { dayjsInitialization } from "@/lib/dayjs";
 import { deleteArticle, getArticle } from "@/services/article";
 import { postComment } from "@/services/comment";
+import { headers } from "next/headers";
 
 import { ArticleViewContent } from "./ArticleViewContent";
+import { ArticleLikeForm } from "./ArticleLikeForm"
 import { CommentForm, CommentList } from "../comment";
 import { DeleteForm } from "../common";
 import { Separator } from "../ui/separator";
@@ -12,12 +14,15 @@ import { Separator } from "../ui/separator";
 interface ArticleViewProps {
   articleId: string;
 }
+
 export async function ArticleView({ articleId }: ArticleViewProps) {
+  const headersList = headers();
+  const ip = headersList.get("x-forwarded-for");
   const article = await getArticle({
     articleId,
     incViews: true,
   });
-
+  const userId = ip || "" // userID
   dayjsInitialization();
 
   return (
@@ -42,7 +47,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
       </div>
 
       <ArticleViewContent content={article.contents} />
-
+      <ArticleLikeForm article={article} userId={userId}/>
       <CommentList
         comments={article.comments}
         articleId={article.id}

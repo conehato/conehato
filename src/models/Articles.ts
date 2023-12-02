@@ -16,6 +16,7 @@ export interface ArticleEntity {
   views: number;
   createdAt: string;
   isHot: boolean;
+  likes: string[];
 }
 export interface Articles extends mongoose.Document {
   user: null;
@@ -27,6 +28,7 @@ export interface Articles extends mongoose.Document {
   views: number;
   isHot: boolean;
   createdAt: string;
+  likes: string[];
 }
 
 const ArticleSchema = new mongoose.Schema<Articles>(
@@ -80,10 +82,13 @@ const ArticleSchema = new mongoose.Schema<Articles>(
     },
     views: { type: Number, default: 0 },
     isHot: { type: Boolean, default: false },
+    likes: {
+      type: [String]
+    }
   },
   { timestamps: true }
 );
 
 export const Article =
-  (mongoose.models.Article as any as false) ||
+  (mongoose.models?.Article as any as false) ||
   mongoose.model<Articles>("Article", ArticleSchema);

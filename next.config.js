@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: {
+      allowedForwardedHosts: ['shiny-happiness-q6v546ggpx62vj4-3000.app.github.dev'],
+    },
+  },
   transpilePackages: ["@ckeditor/ckeditor5-build-classic"],
   images: {
     remotePatterns: [
@@ -12,3 +17,4 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+

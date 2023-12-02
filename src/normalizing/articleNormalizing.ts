@@ -16,5 +16,7 @@ export function articleNormalizing(article: Articles): ArticleEntity {
     views: article.views,
     createdAt: article.createdAt,
     isHot: article.isHot,
+    likes: article.likes
   };
+
 }
