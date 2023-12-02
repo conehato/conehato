@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 
 import { dayjsInitialization } from "@/lib/dayjs";
-import { ArticleEntity } from "@/models";
-import { getArticle } from "@/services/article";
+import { deleteArticle, getArticle } from "@/services/article";
 import { postComment } from "@/services/comment";
 
+import { ArticleDeleteForm } from "./ArticleDeleteForm";
 import { ArticleViewContent } from "./ArticleViewContent";
 import { CommentForm, CommentList } from "../comment";
 import { Separator } from "../ui/separator";
@@ -22,16 +22,23 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
 
   return (
     <div className="flex flex-col gap-2 rounded">
-      <div className="flex flex-col border-b-4 px-3 py-2">
-        <div className="text-lg font-semibold">{article.title}</div>
+      <div className="flex items-end border-b-4">
+        <div className="flex flex-1 flex-col px-3 py-2">
+          <div className="text-lg font-semibold">{article.title}</div>
 
-        <div className="flex h-5 items-center text-sm gap-2">
-          <div>{`${article.anonymous.name}(${article.anonymous.ip})`}</div>
-          <Separator orientation="vertical" />
-          <div>{dayjs(article.createdAt).fromNow()}</div>
-          <Separator orientation="vertical" />
-          <div>{article.views}</div>
+          <div className="flex h-5 items-center text-sm gap-2">
+            <div>{`${article.anonymous.name}(${article.anonymous.ip})`}</div>
+            <Separator orientation="vertical" />
+            <div>{dayjs(article.createdAt).fromNow()}</div>
+            <Separator orientation="vertical" />
+            <div>{article.views}</div>
+          </div>
         </div>
+
+        <ArticleDeleteForm
+          defaultValues={{ articleId: article.id, password: "" }}
+          onSubmit={deleteArticle}
+        />
       </div>
 
       <ArticleViewContent content={article.contents} />

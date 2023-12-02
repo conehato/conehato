@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
 
 import { CommentFormType } from "@/components/comment";
+import { getHash } from "@/lib/hash";
 import { Article, Comments } from "@/models";
 
 import { dbConnect } from "../dbConnect";
@@ -15,7 +16,11 @@ export async function postComment(values: CommentFormType) {
   await dbConnect();
 
   const newComments = {
-    anonymous: { ip, name: values.name, password: values.password },
+    anonymous: {
+      ip,
+      name: values.name,
+      password: values.password ? await getHash(values.password) : undefined,
+    },
     contents: values.contents,
     isChildren: Boolean(values.parentId),
   } as Comments;
