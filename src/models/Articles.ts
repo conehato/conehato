@@ -16,7 +16,7 @@ export interface ArticleEntity {
   views: number;
   createdAt: string;
   isHot: boolean;
-  isLiked: boolean;
+  likes: string[];
 }
 export interface Articles extends mongoose.Document {
   user: null;
@@ -91,5 +91,5 @@ const ArticleSchema = new mongoose.Schema<Articles>(
 );
 
 export const Article =
-  (mongoose.models.Article as any as false) ||
+  (mongoose.models?.Article as any as false) ||
   mongoose.model<Articles>("Article", ArticleSchema);

@@ -4,6 +4,7 @@ import { dayjsInitialization } from "@/lib/dayjs";
 import { ArticleEntity } from "@/models";
 import { getArticle } from "@/services/article";
 import { postComment } from "@/services/comment";
+import { headers } from "next/headers";
 
 import { ArticleViewContent } from "./ArticleViewContent";
 import { ArticleLikeForm } from "./ArticleLikeForm"
@@ -15,11 +16,13 @@ interface ArticleViewProps {
 }
 
 export async function ArticleView({ articleId }: ArticleViewProps) {
+  const headersList = headers();
+  const ip = headersList.get("x-forwarded-for");
   const article = await getArticle({
     articleId,
     incViews: true,
   });
-
+  const userId = ip || "" // userID
   dayjsInitialization();
 
   return (
@@ -37,7 +40,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
       </div>
 
       <ArticleViewContent content={article.contents} />
-      <ArticleLikeForm article={article}/>
+      <ArticleLikeForm article={article} userId={userId}/>
       <CommentList
         comments={article.comments}
         articleId={article.id}
