@@ -21,7 +21,7 @@ export async function deleteComment(values: DeleteFormType) {
     (comment) => comment._id.toString() === values.commentId
   );
 
-  if (!commentIndex) throw new Error("Comment does not exist.");
+  if (commentIndex === -1) throw new Error("Comment does not exist.");
 
   const comment = article.comments[commentIndex];
 
