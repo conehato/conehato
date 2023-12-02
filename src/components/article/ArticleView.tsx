@@ -4,9 +4,9 @@ import { dayjsInitialization } from "@/lib/dayjs";
 import { deleteArticle, getArticle } from "@/services/article";
 import { postComment } from "@/services/comment";
 
-import { ArticleDeleteForm } from "./ArticleDeleteForm";
 import { ArticleViewContent } from "./ArticleViewContent";
 import { CommentForm, CommentList } from "../comment";
+import { DeleteForm } from "../common";
 import { Separator } from "../ui/separator";
 
 interface ArticleViewProps {
@@ -35,7 +35,7 @@ export async function ArticleView({ articleId }: ArticleViewProps) {
           </div>
         </div>
 
-        <ArticleDeleteForm
+        <DeleteForm
           defaultValues={{ articleId: article.id, password: "" }}
           onSubmit={deleteArticle}
         />

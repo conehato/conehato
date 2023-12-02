@@ -3,13 +3,13 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { ArticleDeleteFormType } from "@/components/article";
+import { DeleteFormType } from "@/components/common";
 import { compareHash } from "@/lib/hash";
 import { Article } from "@/models";
 
 import { dbConnect } from "../dbConnect";
 
-export async function deleteArticle(values: ArticleDeleteFormType) {
+export async function deleteArticle(values: DeleteFormType) {
   await dbConnect();
 
   const article = await Article.findById(values.articleId).exec();
