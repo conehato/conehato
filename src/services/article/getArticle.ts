@@ -22,8 +22,6 @@ export async function getArticle({ articleId, incViews }: GetArticleReq) {
 
   if (!article) throw new Error("Article does not exist.");
 
-  console.log(article)
-  revalidatePath(article?.category ? `/${article.category}` : "/", "layout");
-  // revalidatePath(`/${article.category}/${article.id}`, "page");
+  revalidatePath(article?.category ? `/${article.category}` : "/", "page");
   return articleNormalizing(article);
 }

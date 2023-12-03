@@ -32,4 +32,5 @@ export async function postLike(values: ArticleEntity, userId: string) {
         },
       }).exec();
   }
+  revalidatePath(`/${article.category}/${article.id}`, 'page');
 }
