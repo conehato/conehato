@@ -48,7 +48,7 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
     <div onClick={(e) => e.stopPropagation()}>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="ghost">삭제</Button>
+          <div className="rounded-md px-1 text-sm text-slate-500">삭제</div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <Form {...form}>
@@ -59,7 +59,7 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
               })}
             >
               <DialogHeader>
-                <DialogTitle>{target} 삭제</DialogTitle>
+                <DialogTitle>{target}삭제</DialogTitle>
                 <DialogDescription>
                   {target}을 작성 하실때 입력하신 비밀번호를 입력하세요.
                 </DialogDescription>

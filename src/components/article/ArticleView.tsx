@@ -19,33 +19,34 @@ interface ArticleViewProps {
 export function ArticleView({ article }: ArticleViewProps) {
   const headersList = headers();
   const ip = headersList.get("x-forwarded-for");
-  
+
   const userId = ip || "" // userID
   dayjsInitialization();
 
   return (
     <div className="flex flex-col gap-2 rounded">
       <div className="flex items-end border-b-4">
-        <div className="flex flex-1 flex-col px-3 py-2">
-          <div className="text-lg font-semibold">{article.title}</div>
+        <div className="flex flex-1 flex-col px-3 py-2 gap-1">
+          <div className="text-lg/[1.5rem] font-semibold">{article.title}</div>
 
-          <div className="flex h-5 items-center text-sm gap-2">
-            <div>{`${article.anonymous.name}(${article.anonymous.ip})`}</div>
-            <Separator orientation="vertical" />
-            <div>{dayjs(article.createdAt).fromNow()}</div>
-            <Separator orientation="vertical" />
-            <div>{article.views}</div>
+          <div className="flex h-6 items-center text-sm justify-between text-slate-500">
+            <div className="flex gap-2">
+              <div>{`${article.anonymous.name}(${article.anonymous.ip})`}</div>
+              <Separator orientation="vertical" />
+              <div>{dayjs(article.createdAt).fromNow()}</div>
+              <Separator orientation="vertical" />
+              <div>{article.views}</div>
+            </div>
+            <DeleteForm
+              defaultValues={{ articleId: article.id, password: "" }}
+              onSubmit={deleteArticle}
+            />
           </div>
         </div>
-
-        <DeleteForm
-          defaultValues={{ articleId: article.id, password: "" }}
-          onSubmit={deleteArticle}
-        />
       </div>
 
       <ArticleViewContent content={article.contents} />
-      <ArticleLikeForm article={article} userId={userId}/>
+      <ArticleLikeForm article={article} userId={userId} />
       <CommentList
         comments={article.comments}
         articleId={article.id}

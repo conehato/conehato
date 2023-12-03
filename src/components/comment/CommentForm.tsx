@@ -13,6 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
   name: z.string(),
@@ -42,9 +43,10 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
           onSubmit(values);
           form.reset();
         })}
-        className="space-y-1 m-3 border-2 border-slate-400"
+        className="space-y-2 border-slate-400 px-3 py-2 bg-slate-100"
       >
-        <div className="flex gap-0">
+        <div>{defaultValues.parentId ? "답글 작성" : "댓글 작성"}</div>
+        <div className="flex gap-2">
           <FormField
             control={form.control}
             name="name"
@@ -78,7 +80,7 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="contents" {...field} />
+                <Textarea className="h-10" placeholder="contents" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
