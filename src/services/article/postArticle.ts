@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { ArticleFormType } from "@/components/article";
+import { getHash } from "@/lib/hash";
 import { Article } from "@/models";
 
 import { dbConnect } from "../dbConnect";
@@ -16,7 +17,11 @@ export async function postArticle(values: ArticleFormType) {
   await dbConnect();
 
   const article = await Article.create({
-    anonymous: { ip, name: values.name, password: values.password },
+    anonymous: {
+      ip,
+      name: values.name,
+      password: values.password ? await getHash(values.password) : undefined,
+    },
     title: values.title,
     contents: values.contents,
     category: values.category,

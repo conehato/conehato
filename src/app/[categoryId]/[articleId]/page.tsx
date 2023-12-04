@@ -24,9 +24,14 @@ export default async function ArticleViewPage({
   params: { categoryId, articleId },
   searchParams,
 }: ArticleViewPageProps) {
+  const article = await getArticle({
+    articleId,
+    incViews: true,
+  });
+
   return (
     <div className="flex flex-col gap-3">
-      <ArticleView articleId={articleId} />
+      <ArticleView article={article} />
       <ArticleList
         categoryId={categoryId}
         page={Number(searchParams.page || 1)}

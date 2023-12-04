@@ -21,5 +21,5 @@ const CategorySchema = new mongoose.Schema<Categories>({
 });
 
 export const Category =
-  (mongoose.models.Category as any as false) ||
+  (mongoose.models?.Category as any as false) ||
   mongoose.model<Categories>("Category", CategorySchema);
