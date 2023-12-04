@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
+  experimental: process.env.NODE_ENV === 'development' ? {
     serverActions: {
       allowedForwardedHosts: ['shiny-happiness-q6v546ggpx62vj4-3000.app.github.dev'],
     },
-  },
+  } : null,
   transpilePackages: ["@ckeditor/ckeditor5-build-classic"],
   images: {
     remotePatterns: [
