@@ -4,6 +4,7 @@ export interface CategoryEntity {
   id: string;
   name: string;
   group?: string;
+  href: string;
 }
 export interface Categories extends mongoose.Document {
   _id: string;

@@ -29,7 +29,7 @@ export function NavigationMenu({
         <NavigationMenuList className="px-4">
           {categories.map((category) => (
             <NavigationMenuItem key={category.id}>
-              <Link href={`/${category.id}`} legacyBehavior passHref>
+              <Link href={`/${category.href}`} legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(
                     navigationMenuTriggerStyleWithActive(
