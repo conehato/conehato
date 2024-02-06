@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 
 import { ArticleList, ArticleView } from "@/components/article";
+import { parseParamsCategoryId } from "@/normalizing";
 import { getArticle } from "@/services/article";
-
-import { parseParamsCategoryId } from "../layout";
 
 interface ArticleViewPageProps {
   params: { categoryId: string; articleId: string };
