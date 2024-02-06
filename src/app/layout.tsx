@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 
 import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
@@ -27,6 +28,7 @@ export default function RootLayout({
           <div className="max-w-3xl w-full">{children}</div>
         </div>
         <Footer />
+        <Toaster />
       </body>
       <Analytics />
     </html>
