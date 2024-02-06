@@ -1,11 +1,10 @@
 import dayjs from "dayjs";
+import { CornerDownRight } from "lucide-react";
 
 import { dayjsInitialization } from "@/lib/dayjs";
-import { cn } from "@/lib/utils";
 import { CommentsEntity } from "@/models";
 import { postComment } from "@/services/comment";
 import { deleteComment } from "@/services/comment/deleteComment";
-import { CornerDownRight } from "lucide-react";
 
 import { CommentChildrenForm } from "./CommentChildrenForm";
 import { DeleteForm } from "../common";
@@ -36,7 +35,7 @@ export function CommentListItem({
       onSubmit={postComment}
     >
       <div className="flex flex-row items-center px-3 gap-2">
-        {comment.isChildren && <CornerDownRight className="w-5 h-5"/>}
+        {comment.isChildren && <CornerDownRight className="w-5 h-5" />}
         <div className="flex flex-col gap-1 py-1.5 border-b border-[#dfe1ee] w-full">
           <div className="flex justify-between">
             <div className="flex gap-1 text-sm">

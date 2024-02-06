@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { ArticleList, ArticleView } from "@/components/article";
-import { ArticleEntity } from "@/models";
+import { parseParamsCategoryId } from "@/normalizing";
 import { getArticle } from "@/services/article";
 
 interface ArticleViewPageProps {
@@ -21,9 +21,11 @@ export async function generateMetadata({
 }
 
 export default async function ArticleViewPage({
-  params: { categoryId, articleId },
+  params: { categoryId: _categoryId, articleId },
   searchParams,
 }: ArticleViewPageProps) {
+  const { categoryId } = parseParamsCategoryId(_categoryId);
+
   const article = await getArticle({
     articleId,
     incViews: true,

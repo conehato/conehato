@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
-
-import { dayjsInitialization } from "@/lib/dayjs";
-import { deleteArticle } from "@/services/article";
-import { ArticleEntity } from "@/models";
-import { postComment } from "@/services/comment";
 import { headers } from "next/headers";
 
+import { dayjsInitialization } from "@/lib/dayjs";
+import { ArticleEntity } from "@/models";
+import { deleteArticle } from "@/services/article";
+import { postComment } from "@/services/comment";
+
+import { ArticleLikeForm } from "./ArticleLikeForm";
 import { ArticleViewContent } from "./ArticleViewContent";
-import { ArticleLikeForm } from "./ArticleLikeForm"
 import { CommentForm, CommentList } from "../comment";
 import { DeleteForm } from "../common";
 import { Separator } from "../ui/separator";
@@ -20,7 +20,7 @@ export function ArticleView({ article }: ArticleViewProps) {
   const headersList = headers();
   const ip = headersList.get("x-forwarded-for");
 
-  const userId = ip || "" // userID
+  const userId = ip || ""; // userID
   dayjsInitialization();
 
   return (

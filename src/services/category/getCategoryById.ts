@@ -7,7 +7,7 @@ export async function getCategoryById({ categoryId }: GetCategoryByIdReq) {
   const { rows } = await getRootCategories();
   const category = rows.find((row) => row.id === categoryId);
 
-  if (!category) throw new Error("Category does not exist.");
+  if (!category) throw new Error("Category does not exist." + categoryId);
 
   return category;
 }

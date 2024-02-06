@@ -23,6 +23,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   articleId: z.string(),
@@ -34,9 +35,11 @@ export type DeleteFormType = z.infer<typeof formSchema>;
 
 interface DeleteFormProps {
   defaultValues: DeleteFormType;
-  onSubmit: (values: DeleteFormType) => void;
+  onSubmit: (values: DeleteFormType) => Promise<string | undefined>;
 }
 export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
+  const { toast } = useToast();
+
   const form = useForm<DeleteFormType>({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -48,18 +51,21 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
     <div onClick={(e) => e.stopPropagation()}>
       <Dialog>
         <DialogTrigger asChild>
-          <div className="rounded-md px-1 text-sm text-slate-500">삭제</div>
+          <div className="rounded-md px-1 text-sm text-slate-500 cursor-pointer">
+            삭제
+          </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit((values) => {
-                onSubmit(values);
+              onSubmit={form.handleSubmit(async (values) => {
+                const error = await onSubmit(values);
+                error && toast({ description: error, variant: "destructive" });
                 form.reset();
               })}
             >
               <DialogHeader>
-                <DialogTitle>{target}삭제</DialogTitle>
+                <DialogTitle>{target} 삭제</DialogTitle>
                 <DialogDescription>
                   {target}을 작성 하실때 입력하신 비밀번호를 입력하세요.
                 </DialogDescription>
