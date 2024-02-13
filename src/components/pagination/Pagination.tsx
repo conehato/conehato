@@ -49,7 +49,7 @@ export function Pagination({
         onClick={() => setPage(1)}
         className="py-1.5 px-2 h-auto"
       >
-        <ChevronLeft className="mr-1 h-4 w-4" /> 처음
+        <ChevronLeft className="mr-1 h-4 w-4" /> 前
       </Button>
 
       <div className="flex">
@@ -102,7 +102,7 @@ export function Pagination({
         onClick={() => setPage(page + 1)}
         className="py-1.5 px-2 h-auto"
       >
-        다음 <ChevronRight className="ml-1 h-4 w-4" />
+        次 <ChevronRight className="ml-1 h-4 w-4" />
       </Button>
     </div>
   );

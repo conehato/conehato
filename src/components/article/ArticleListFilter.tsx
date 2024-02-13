@@ -38,14 +38,14 @@ export function ArticleListFilter({
           className={cn("px-2 py-1 h-auto", isHot ? "" : "hover:bg-white")}
           onClick={() => setPage(false)}
         >
-          최신
+          最新
         </Button>
         <Button
           variant={isHot ? "outline" : "secondary"}
           className={cn("px-2 py-1 h-auto", isHot ? "hover:bg-white" : "")}
           onClick={() => setPage(true)}
         >
-          화제
+          人気
         </Button>
       </div>
       {categoryId && (

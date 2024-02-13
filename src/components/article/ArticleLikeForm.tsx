@@ -27,7 +27,7 @@ export function ArticleLikeForm({
         }}
       >
         <ThumbsUp className="h-4 w-4 mr-1 text-base" />{" "}
-        {`추천 ${
+        {`いいね ${
           article.likes.length +
           (article.likes.includes(userId)
             ? Number(isLiked) - 1

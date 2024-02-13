@@ -52,7 +52,7 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
       <Dialog>
         <DialogTrigger asChild>
           <div className="rounded-md px-1 text-sm text-slate-500 cursor-pointer">
-            삭제
+            削除
           </div>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
@@ -65,7 +65,7 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
               })}
             >
               <DialogHeader>
-                <DialogTitle>{target} 삭제</DialogTitle>
+                <DialogTitle>{target} 削除</DialogTitle>
                 <DialogDescription>
                   {target}을 작성 하실때 입력하신 비밀번호를 입력하세요.
                 </DialogDescription>
@@ -92,7 +92,7 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
 
               <DialogFooter className="sm:justify-start">
                 <DialogClose asChild>
-                  <Button type="submit">삭제</Button>
+                  <Button type="submit">削除</Button>
                 </DialogClose>
               </DialogFooter>
             </form>
