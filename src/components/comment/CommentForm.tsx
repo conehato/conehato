@@ -45,7 +45,7 @@ export function CommentForm({ defaultValues, onSubmit }: CommentFormProps) {
         })}
         className="space-y-2 border-slate-400 px-3 py-2 bg-slate-100"
       >
-        <div>{defaultValues.parentId ? "답글 작성" : "댓글 작성"}</div>
+        <div>{defaultValues.parentId ? "답글 작성" : "コメント作成"}</div>
         <div className="flex gap-2">
           <FormField
             control={form.control}

@@ -54,10 +54,9 @@ export function ArticleListItem({ article, page }: ArticleListItemProps) {
             {article.category.name}
           </p>
           <p className=" line-clamp-1 text-xs text-stone-500">
-            {/* TODO: 조회수를 추천으로 변경 */}
             {`${article.anonymous.name}(${article.anonymous.ip}) | ${dayjs(
               article.createdAt
-            ).fromNow()} | 조회수 ${article.views}`}
+            ).format("YY.MM.DD")} | 閲覧数 ${article.views}`}
           </p>
         </div>
       </div>

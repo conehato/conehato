@@ -3,7 +3,7 @@ import { CategoryEntity } from "@/models";
 import { getRootCategories } from "./getRootCategories";
 
 const categoryGroupNameObject: Record<string, string> = {
-  game: "게임",
+  game: "ゲーム",
 };
 export async function getCategoriesForNavigation(group?: string) {
   const categories = (await getRootCategories()).rows;
