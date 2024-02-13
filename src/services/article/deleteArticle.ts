@@ -18,11 +18,11 @@ export async function deleteArticle(values: DeleteFormType) {
 
   if (!process.env.DELETE_TEXT || values.password !== process.env.DELETE_TEXT) {
     if (!article.anonymous.password) {
-      return "관리자만 삭제 가능합니다.";
+      return "管理者のみ削除可能です。";
     }
 
     if (!(await compareHash(values.password, article.anonymous.password))) {
-      return "비밀번호가 틀립니다.";
+      return "パスワードが違います。";
     }
   }
 

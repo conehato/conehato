@@ -45,8 +45,6 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
     defaultValues,
   });
 
-  const target = defaultValues.commentId ? "댓글" : "글";
-
   return (
     <div onClick={(e) => e.stopPropagation()}>
       <Dialog>
@@ -65,9 +63,9 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
               })}
             >
               <DialogHeader>
-                <DialogTitle>{target} 削除</DialogTitle>
+                <DialogTitle>削除</DialogTitle>
                 <DialogDescription>
-                  {target}을 작성 하실때 입력하신 비밀번호를 입력하세요.
+                  パスワードを入力してください。
                 </DialogDescription>
               </DialogHeader>
 
