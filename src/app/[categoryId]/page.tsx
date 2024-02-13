@@ -17,8 +17,7 @@ export async function generateMetadata({
 
   return {
     title: `${category.name} - コネハト`,
-    // TODO: 글 목록이라는 일본어로 작성해야함.
-    description: `${category.name} 글 목록`,
+    description: `${category.name} 書き込み一覧`,
   };
 }
 

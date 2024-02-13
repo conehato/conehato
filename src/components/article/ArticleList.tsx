@@ -35,16 +35,19 @@ export async function ArticleList({
       />
 
       <div className="flex flex-col">
-        {
-          articleList.length ? articleList.map((article) => (
+        {articleList.length ? (
+          articleList.map((article) => (
             <ArticleListItem
               key={article.id}
               article={article as any}
               page={page}
             />
-          )) : <div className="w-full py-6 text-center">
-            아직 해당 주제의 글이 없습니다.
-          </div>}
+          ))
+        ) : (
+          <div className="w-full py-6 text-center">
+            まだ書き込みがありません！
+          </div>
+        )}
       </div>
 
       <Pagination count={count} limit={30} page={page} />

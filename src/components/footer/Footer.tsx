@@ -8,7 +8,7 @@ export function Footer() {
       <Link
         className="text-xs"
         target="_blank"
-        href={`mailto:${url}?subject=お問い合わせ?body=안녕하세요 코네하츠입니다.%0D%0A문의 또는 신고 내용을 자세히 적어주세요.%0D%0A`}
+        href={`mailto:${url}?subject=お問い合わせ?body=こんにちはコネハトです。%0D%0Aお問い合わせ内容を詳しく書いてください。%0D%0A`}
       >
         お問い合わせ : {url}
       </Link>
