@@ -9,6 +9,7 @@ import { getHash } from "@/lib/hash";
 import { Article } from "@/models";
 
 import { dbConnect } from "../dbConnect";
+import { sendNotification } from "../notification";
 
 export async function postArticle(values: ArticleFormType) {
   const headersList = headers();
@@ -27,6 +28,7 @@ export async function postArticle(values: ArticleFormType) {
     category: values.category,
   });
 
+  sendNotification({ title: values.title });
   revalidatePath(`/${values.category}`);
   redirect(`/${values.category}/${article._id}`);
 }
