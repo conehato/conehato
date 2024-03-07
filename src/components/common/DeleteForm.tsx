@@ -49,7 +49,7 @@ export function DeleteForm({ defaultValues, onSubmit }: DeleteFormProps) {
     <div onClick={(e) => e.stopPropagation()}>
       <Dialog>
         <DialogTrigger asChild>
-          <div className="rounded-md px-1 text-sm text-slate-500 cursor-pointer">
+          <div className="rounded-md px-1 text-xs text-slate-500 cursor-pointer">
             削除
           </div>
         </DialogTrigger>

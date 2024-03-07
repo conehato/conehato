@@ -12,8 +12,8 @@ export function CommentList({ comments, ...props }: CommentListProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-full items-end px-3 py-1">
-        <p className="text-base font-bold">{`コメント  ${comments.length}`}</p>
+      <div className="flex w-full h-full items-end px-3 py-1 border-y bg-slate-50">
+        <p className="text-base">{`コメント  ${comments.length}`}</p>
       </div>
       <div className="flex flex-col">
         {comments.map((comment) => (
