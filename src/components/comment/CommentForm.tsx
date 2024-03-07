@@ -29,7 +29,7 @@ export type CommentFormType = z.infer<typeof formSchema>;
 export interface CommentFormProps {
   onSubmit: (values: CommentFormType & { articleId: string }) => void;
   defaultValues: CommentFormType;
-  dismissCommentForm: () => void
+  dismissCommentForm?: () => void
 }
 export function CommentForm({ defaultValues, onSubmit, dismissCommentForm }: CommentFormProps) {
   const form = useForm<CommentFormType>({
@@ -88,7 +88,7 @@ export function CommentForm({ defaultValues, onSubmit, dismissCommentForm }: Com
           )}
         />
         <div className="flex justify-end p-2 gap-2">
-          {defaultValues.parentId && <Button type="button" variant="outline" className="text-slate-500" onClick={() => dismissCommentForm()}>취소</Button>}
+          {defaultValues.parentId && <Button type="button" variant="outline" className="text-slate-500" onClick={() => dismissCommentForm!()}>취소</Button>}
           <Button type="submit">提出</Button>
         </div>
       </form>

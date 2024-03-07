@@ -4,7 +4,7 @@ import { CommentsEntity } from "@/models";
 
 import { CommentListItem, CommentListItemProps } from "./CommentListItem";
 
-interface CommentListProps extends Omit<CommentListItemProps, "comment"> {
+interface CommentListProps extends Pick<CommentListItemProps, "articleId" | "categoryId"> {
   comments: CommentsEntity[];
 }
 export function CommentList({ comments, ...props }: CommentListProps) {
