@@ -1,16 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 
 import { CommentForm, CommentFormProps } from "./CommentForm";
 
 interface CommentChildrenFormProps extends CommentFormProps {
   children: React.ReactNode;
   disable: boolean;
+  selectedCommentId: string;
+  setSelectedCommentId: Dispatch<React.SetStateAction<string>>;
 }
 export function CommentChildrenForm({
   children,
   disable,
+  selectedCommentId,
+  setSelectedCommentId,
   ...props
 }: CommentChildrenFormProps) {
   const [show, setShow] = useState(false);
@@ -18,12 +22,12 @@ export function CommentChildrenForm({
   return (
     <div>
       <div
-        onClick={disable ? undefined : () => setShow((prev) => !prev)}
+        onClick={disable ? undefined : () => setSelectedCommentId((id) => id == props.defaultValues.parentId ? '' : props.defaultValues.parentId!)}
         className={disable ? "" : "cursor-pointer"}
       >
         {children}
       </div>
-      {show && <CommentForm {...props} />}
+      {selectedCommentId == props.defaultValues.parentId && <CommentForm {...props} />}
     </div>
   );
 }

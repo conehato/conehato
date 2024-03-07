@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { Dispatch } from 'react'
 import { CornerDownRight } from "lucide-react";
 
 import { dayjsInitialization } from "@/lib/dayjs";
@@ -13,11 +14,15 @@ export interface CommentListItemProps {
   comment: CommentsEntity;
   articleId: string;
   categoryId: string;
+  selectedCommentId: string;
+  setSelectedCommentId: Dispatch<React.SetStateAction<string>>;
 }
 export function CommentListItem({
   comment,
   articleId,
   categoryId,
+  selectedCommentId,
+  setSelectedCommentId,
 }: CommentListItemProps) {
   dayjsInitialization();
 
@@ -32,6 +37,8 @@ export function CommentListItem({
         name: "ああ",
         password: "",
       }}
+      selectedCommentId={selectedCommentId}
+      setSelectedCommentId={setSelectedCommentId}
       onSubmit={postComment}
     >
       <div className="flex flex-row items-center px-3 gap-2">
